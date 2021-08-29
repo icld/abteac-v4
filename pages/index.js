@@ -1,82 +1,96 @@
-import Head from 'next/head'
+import Link from 'next/link';
+import { client } from '../lib/sanity/client';
+import { homeQuery } from '../lib/sanity/homeQuery';
+import groq from 'groq';
 
-export default function Home() {
+import urlFor from '../lib/sanity/urlFor';
+
+export default function Example({ posts }) {
+  console.log(posts);
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
-        <h1 className="text-6xl font-bold">
-          Welcome to{' '}
-          <a className="text-blue-600" href="https://nextjs.org">
-            Next.js!
-          </a>
-        </h1>
-
-        <p className="mt-3 text-2xl">
-          Get started by editing{' '}
-          <code className="p-3 font-mono text-lg bg-gray-100 rounded-md">
-            pages/index.js
-          </code>
-        </p>
-
-        <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full">
-          <a
-            href="https://nextjs.org/docs"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Documentation &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Find in-depth information about Next.js features and API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Learn &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Learn about Next.js in an interactive course with quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Examples &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Discover and deploy boilerplate example Next.js projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Deploy &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+    <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+      <div className='relative h-full top-0 bg-gray-50 pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8'>
+        <div className='absolute inset-0'>
+          <div className='bg-white h-1/3 sm:h-2/3' />
         </div>
-      </main>
-
-      <footer className="flex items-center justify-center w-full h-24 border-t">
-        <a
-          className="flex items-center justify-center"
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className="h-4 ml-2" />
-        </a>
-      </footer>
+        <div className='relative max-w-7xl mx-auto'>
+          <div className='text-center'>
+            <h2 className='text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl'>
+              A Blog to End All Confusion
+            </h2>
+            <p className='mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4'>
+              Gibberish for your achey bones
+            </p>
+          </div>
+          <div className='mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none'>
+            {posts.map((post) => (
+              <div
+                key={post.title}
+                className='flex flex-col rounded-lg shadow-lg overflow-hidden'
+              >
+                <div className='flex-shrink-0'>
+                  <img
+                    className='h-48 w-full object-cover'
+                    src={urlFor(post.mainImage)}
+                    alt={post.title}
+                  />
+                </div>
+                <div className='flex-1 bg-white p-6 flex flex-col justify-between'>
+                  <div className='flex-1'>
+                    <p className='text-sm font-medium text-indigo-600'>
+                      <a href='' className='hover:underline'>
+                        {post.categories}
+                      </a>
+                    </p>
+                    <a href={`/posts/${post.slug}`} className='block mt-2'>
+                      <p className='text-xl font-semibold text-gray-900'>
+                        {post.title}
+                      </p>
+                      <p className='mt-3 text-base text-gray-500'>
+                        {post.description}
+                      </p>
+                    </a>
+                  </div>
+                  <div className='mt-6 flex items-center'>
+                    <div className='flex-shrink-0'>
+                      <a href=''>
+                        <span className='sr-only'>{post.author}</span>
+                        <img
+                          className='h-10 w-10 rounded-full'
+                          src={urlFor(post.authImg)}
+                          alt=''
+                        />
+                      </a>
+                    </div>
+                    <div className='ml-3'>
+                      <p className='text-sm font-medium text-gray-900'>
+                        <a href='' className='hover:underline'>
+                          {post.authName}
+                        </a>
+                      </p>
+                      <div className='flex space-x-1 text-sm text-gray-500'>
+                        <time dateTime={post.datetime}>{post.date}</time>
+                        <span aria-hidden='true'>&middot;</span>
+                        <span>{post.readingTime} read</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
-  )
+  );
+}
+
+export async function getStaticProps({ params }) {
+  const posts = await client.fetch(homeQuery);
+
+  return {
+    props: {
+      posts,
+    },
+  };
 }

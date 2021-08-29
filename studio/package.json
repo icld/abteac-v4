@@ -1,0 +1,33 @@
+{
+  "name": "stripestarter",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Barebones blog set-up with NextJS and Sanity. Integrated with Stripe in a tutorial for https://sanity.io. Read it [here](https://www.sanity.io/guides/building-ecommerce-sites-with-the-stripe-api). Comes with Sanity's inbuilt image handler",
+  "main": "package.json",
+  "author": "Ian Cameron Lyles <ian@icldesign.com>",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "sanity start",
+    "build": "sanity build"
+  },
+  "keywords": [
+    "sanity"
+  ],
+  "dependencies": {
+    "@sanity/base": "^2.17.0",
+    "@sanity/components": "^2.14.0",
+    "@sanity/core": "^2.17.0",
+    "@sanity/default-layout": "^2.17.0",
+    "@sanity/default-login": "^2.17.0",
+    "@sanity/desk-tool": "^2.17.0",
+    "@sanity/vision": "^2.15.0",
+    "prop-types": "^15.7",
+    "react": "^17.0",
+    "react-dom": "^17.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bathrobe/sanity-next-stripe-starter"
+  }
+}
