@@ -80,7 +80,7 @@ export default function Example(post) {
 
               <div className='grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-3 lg:gap-8'>
                 <img
-                key={product.id}
+                  key={product.id}
                   alt={product.id}
                   className={classNames(
                     'lg:col-span-2 lg:row-span-2',
@@ -90,6 +90,8 @@ export default function Example(post) {
                 />
                 {product.images.map((image) => (
                   <img
+                    key=''
+                    alt=''
                     src={urlFor(image.asset.url)}
                     className={classNames('hidden lg:block', 'rounded-lg')}
                   />
