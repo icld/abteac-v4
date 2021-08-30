@@ -6,14 +6,14 @@ import Cart from '../components/Cart';
 
 function MyApp({ Component, pageProps }) {
   return (
-    <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+    <div className='px-4 mx-auto max-w-7xl sm:px-6 lg:px-8'>
       <CartProvider
         mode='checkout-session'
         stripe={process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY}
         currency={'usd'}
       >
         <SimpleNav />
-        <CartSummary />
+        {/* <CartSummary /> */}
         <Component {...pageProps} />
       </CartProvider>
     </div>

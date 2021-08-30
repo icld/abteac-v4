@@ -12,21 +12,8 @@ const Merch = ({ products }) => {
   console.log(products);
 
   return (
-    <main className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-      {/* <SimpleNav /> */}
-      <h1>My Merch Store</h1>
-      <p>
-        Powered by the{' '}
-        <a href='https://useshoppingcart.com'>use-shopping-cart</a> React hooks
-        library.
-      </p>
-      {/* <Cart> */}
+    <main className='px-4 mx-auto max-w-7xl sm:px-6 lg:px-8'>
       <Products products={products} />
-      {/* <CartSummary /> */}
-      {/* </Cart> */}
-      <Link href='/'>
-        <a>Back Home</a>
-      </Link>
     </main>
   );
 };
