@@ -1,11 +1,11 @@
 {
   "root": true,
-  "project": {
-    "name": "stripe-starter"
-  },
   "api": {
     "projectId": "5w8z38n9",
     "dataset": "production"
+  },
+  "project": {
+    "name": "stripe-starter"
   },
   "plugins": [
     "@sanity/base",
