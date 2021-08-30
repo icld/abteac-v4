@@ -4,13 +4,15 @@ import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline';
 import { GiForearm } from 'react-icons/gi';
 import { useRouter } from 'next/router';
+import CartPopDown from './CartPopDown';
+
 import Link from 'next/link';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function Example() {
+const SimpleNav = () => {
   const router = useRouter();
   return (
     <Disclosure as='nav' className='bg-white shadow'>
@@ -55,6 +57,10 @@ export default function Example() {
                 </button>
 
                 {/* Profile dropdown */}
+
+                {/* Cart Pop Down */}
+                <CartPopDown />
+
                 {/* <Menu as='div' className='relative ml-3'>
                   <div>
                     <Menu.Button className='flex text-sm bg-white rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'>
@@ -152,4 +158,6 @@ export default function Example() {
       )}
     </Disclosure>
   );
-}
+};
+
+export default SimpleNav;
