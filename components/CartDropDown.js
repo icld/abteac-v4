@@ -120,7 +120,7 @@ export default function CartPopDown() {
                             <HiOutlineX className='text-2xl group-hover:text-red-700' />
                           </button>
                           <div className='w-1/2 ml-1 text-lg text-center text-pink-700 align-middle border-2 border-gray-700 rounded-md shadow-sm text-md'>
-                            {cartCount}
+                            {p[1].quantity}
                           </div>
                         </div>
                         <div className='flex flex-row w-full'>
