@@ -1,6 +1,7 @@
 import 'tailwindcss/tailwind.css';
 import SimpleNav from '../components/SimpleNav';
 import { CartProvider } from 'use-shopping-cart';
+import Footer from '../components/Footer';
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -13,6 +14,7 @@ function MyApp({ Component, pageProps }) {
         <SimpleNav />
         {/* <CartSummary /> */}
         <Component {...pageProps} />
+        <Footer />
       </CartProvider>
     </div>
   );
