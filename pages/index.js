@@ -34,7 +34,6 @@ const Home = ({ posts }) => {
                   className='flex flex-col overflow-hidden rounded-lg shadow-lg'
                 >
                   <div className='flex-shrink-0'>
-                    {/* <Image src={post.mainImage} alt='' /> */}
                     <Image
                       src={urlFor(post.mainImage).url()}
                       layout='responsive'

@@ -1,12 +1,15 @@
 // web/pages/result.js
-
-import { useRouter } from "next/router";
-import Link from "next/link";
-import useSWR from "swr";
-import PrintObject from "../components/PrintObject";
-import { fetchGetJSON } from "../utils/apiHelpers";
+import { useEffect } from 'react';
+import { useShoppingCart } from 'use-shopping-cart';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
+import useSWR from 'swr';
+import PrintObject from '../components/PrintObject';
+import { fetchGetJSON } from '../utils/apiHelpers';
 
 const ResultPage = () => {
+  const { clearCart } = useShoppingCart();
+
   const router = useRouter();
   // Fetch CheckoutSession from static page via
   // https://nextjs.org/docs/basic-features/data-fetching#static-generation
@@ -17,34 +20,28 @@ const ResultPage = () => {
     fetchGetJSON
   );
 
+  useEffect(() => {
+    clearCart;
+  }, []);
+
   if (error) {
-		return <div>failed to load</div>;
-	}
+    return <div>failed to load</div>;
+  }
 
   return (
-    <div className="page-container">
-      Congrats
-      <h1>Checkout Payment Result</h1>
-      <p>
-        With the data below, you can display a custom confirmation message to
-        your customer.
-      </p>
-      <p>For example:</p>
-      <hr />
-      <h3>
-        Thank you, {data?.payment_intent.charges.data[0].billing_details.name}.
-      </h3>
-      <p>
-        Confirmation email sent to{" "}
+    <div className='px-4 mx-auto mt-12 text-center max-w-7xl sm:px-6 lg:px-8'>
+      <div className='mb-4 text-4xl'>Congrats</div>
+      <h1 className='mb-4 text-2xl'>Checkout Payment Result</h1>
+      <div className='mb-6 text-2xl'>
+        Thank you,
+        <div className='text-3xl text-gray-500 capitalize - '>
+          {data?.payment_intent.charges.data[0].billing_details.name}.
+        </div>
+      </div>
+      <p className='text-xl'>
+        Confirmation email sent to{' '}
         {data?.payment_intent.charges.data[0].billing_details.email}.
       </p>
-      <hr />
-      <h2>Status: {data?.payment_intent?.status ?? "loading..."}</h2>
-      <h3>CheckoutSession response:</h3>
-      <PrintObject content={data ?? "loading..."} />
-      <Link href="/">
-        <a>Back home</a>
-      </Link>
     </div>
   );
 };
