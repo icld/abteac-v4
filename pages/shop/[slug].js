@@ -5,7 +5,6 @@ import groq from 'groq';
 import Product from '../../components/Product';
 
 export default function Item({ post }) {
-  console.log(post);
   return (
     <div>
       <Product post={post} />

@@ -24,10 +24,7 @@ export default function CartPopDown() {
     redirectToCheckout,
   } = useShoppingCart();
 
-  console.log(cartCount);
-
   let prods = [cartDetails];
-  //   console.log(prods);
 
   //sets our cartEmpty state with cart data
   useEffect(() => setCartEmpty(!cartCount), [cartCount]);
@@ -85,7 +82,6 @@ export default function CartPopDown() {
                   </li>
                 ) : null} */}
 
-                {console.log(Object.entries(prods[0]))}
                 {cartEmpty === false ? (
                   products.map((p, i) => (
                     <li key={i} className='flex flex-row py-6 cursor-pointer '>

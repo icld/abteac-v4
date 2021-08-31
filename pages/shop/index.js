@@ -9,8 +9,6 @@ import { merchQuery } from '../../lib/sanity/merchQuery';
 import SimpleNav from '../../components/SimpleNav';
 
 const Merch = ({ products }) => {
-  console.log(products);
-
   return (
     <main className='px-4 mx-auto max-w-7xl sm:px-6 lg:px-8'>
       <Products products={products} />

@@ -1,8 +1,6 @@
 import 'tailwindcss/tailwind.css';
 import SimpleNav from '../components/SimpleNav';
 import { CartProvider } from 'use-shopping-cart';
-import CartSummary from '../components/CartSummary';
-import Cart from '../components/Cart';
 
 function MyApp({ Component, pageProps }) {
   return (

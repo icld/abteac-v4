@@ -14,7 +14,6 @@ export default function Example(post) {
   const { addItem, removeItem } = useShoppingCart();
 
   const product = post.post;
-  console.log(product);
   return (
     <div className='bg-white'>
       <div className='pt-6 pb-16 sm:pb-24'>

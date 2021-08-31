@@ -28,8 +28,6 @@ const Home = ({ posts }) => {
           </div>
           <div className='grid max-w-lg gap-5 mx-auto mt-12 lg:grid-cols-3 lg:max-w-none'>
             {posts.map((post) => {
-              console.log(post);
-              console.log(urlFor(post.mainImage).url());
               return (
                 <div
                   key={post.title}
@@ -37,11 +35,11 @@ const Home = ({ posts }) => {
                 >
                   <div className='flex-shrink-0'>
                     {/* <Image src={post.mainImage} alt='' /> */}
-                    <img
+                    <Image
                       src={urlFor(post.mainImage).url()}
-                      // layout='responsive'
-                      // width='200'
-                      // height='200'
+                      layout='responsive'
+                      width='300'
+                      height='200'
                       className='object-cover w-full h-48'
                       alt={post.title}
                     />
@@ -53,14 +51,16 @@ const Home = ({ posts }) => {
                           {post.categories}
                         </a>
                       </p>
-                      <a href={`/posts/${post.slug}`} className='block mt-2'>
-                        <p className='text-xl font-semibold text-gray-900'>
-                          {post.title}
-                        </p>
-                        <p className='mt-3 text-base text-gray-500'>
-                          {post.description}
-                        </p>
-                      </a>
+                      <Link href={`/posts/${post.slug}`}>
+                        <a className='block mt-2'>
+                          <p className='text-xl font-semibold text-gray-900'>
+                            {post.title}
+                          </p>
+                          <p className='mt-3 text-base text-gray-500'>
+                            {post.description}
+                          </p>
+                        </a>
+                      </Link>
                     </div>
                     <div className='flex items-center mt-6'>
                       <div className='flex-shrink-0'>
