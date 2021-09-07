@@ -5,6 +5,7 @@ import { CurrencyDollarIcon, GlobeIcon } from '@heroicons/react/outline';
 import BlockContent from '@sanity/block-content-to-react';
 import urlFor from '../lib/sanity/urlFor';
 import { useShoppingCart, formatCurrencyString } from 'use-shopping-cart';
+import Image from 'next/image';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -38,22 +39,24 @@ export default function Example(post) {
             <div className='mt-8 lg:mt-0 lg:col-start-1 lg:col-span-7 lg:row-start-1 lg:row-span-3'>
               <h2 className='sr-only'>Images</h2>
 
-              <div className='grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-3 lg:gap-8'>
-                <img
-                  key={product.id}
-                  alt={product.id}
-                  className={classNames(
-                    'lg:col-span-2 lg:row-span-2',
-                    'rounded-lg'
-                  )}
-                  src={urlFor(product.image)}
-                />
-                {product.images
-                  ? product.images.map((image) => (
+              <div className='grid grid-cols-1 lg:grid-cols-2 lg:gap-8'>
+                <div className='aspect-h-2 aspect-w-2 lg:col-span-2 lg:row-span-2 '>
+                  <Image
+                    src={`${urlFor(product.image).url()}`}
+                    key={product.id}
+                    alt={product.id}
+                    layout='fill'
+                    objectFit='cover'
+                    className={classNames('', 'rounded-lg ')}
+                  />
+                </div>
+                {/* {product.images
+                  ? product.images.map((image, i) => (
                       <img
-                        key=''
+                        key={i}
                         alt=''
                         src={urlFor(image.asset.url)}
+                        layout='fill'
                         className={classNames('hidden lg:block', 'rounded-lg')}
                       />
                     ))
@@ -72,7 +75,7 @@ export default function Example(post) {
                         )}
                       />
                     ))
-                  : null}
+                  : null} */}
               </div>
             </div>
 

@@ -51,8 +51,8 @@ const Home = ({ posts }) => {
                           .url()}`}
                         layout='responsive'
                         // quality='40'
-                        width={600}
-                        height={400}
+                        width='600'
+                        height='400'
                         className='object-cover'
                         alt={post.title}
                       />
