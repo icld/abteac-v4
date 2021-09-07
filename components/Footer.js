@@ -6,7 +6,7 @@ import {
   ImLinkedin,
 } from 'react-icons/im';
 
-export default function Example() {
+export default function Footer() {
   return (
     <footer className='bg-white'>
       <div className='px-4 py-12 mx-auto max-w-7xl sm:px-6 md:flex md:items-center md:justify-between lg:px-8'>

@@ -44,13 +44,16 @@ const Home = ({ posts }) => {
                     className='flex flex-col overflow-hidden rounded-lg shadow-lg'
                   >
                     <div className='flex-shrink-0'>
-                      <img
-                        src={urlFor(post.mainImage).url()}
+                      <Image
+                        src={`${urlFor(post.mainImage)
+                          .width(600)
+                          .height(400)
+                          .url()}`}
                         layout='responsive'
-                        quality='40'
-                        width='300'
-                        height='200'
-                        className='object-cover w-full h-48'
+                        // quality='40'
+                        width={600}
+                        height={400}
+                        className='object-cover'
                         alt={post.title}
                       />
                     </div>
@@ -76,10 +79,16 @@ const Home = ({ posts }) => {
                         <div className='flex-shrink-0'>
                           <a href=''>
                             <span className='sr-only'>{post.author}</span>
-                            <img
-                              className='w-10 h-10 rounded-full'
-                              src={urlFor(post.authImg)}
-                              alt=''
+                            <Image
+                              className='rounded-full'
+                              src={`${urlFor(post.authImg)
+                                .width(40)
+                                .height(40)
+                                .url()}`}
+                              width={40}
+                              height={40}
+                              layout='responsive'
+                              alt='Author headshots'
                             />
                           </a>
                         </div>
