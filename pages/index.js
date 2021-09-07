@@ -43,19 +43,19 @@ const Home = ({ posts }) => {
                     key={post.title}
                     className='flex flex-col overflow-hidden rounded-lg shadow-lg'
                   >
-                    <div className='flex-shrink-0'>
-                      <Image
-                        src={`${urlFor(post.mainImage)
-                          .width(600)
-                          .height(400)
-                          .url()}`}
-                        layout='responsive'
-                        // quality='40'
-                        width='600'
-                        height='400'
-                        className='object-cover'
-                        alt={post.title}
-                      />
+                    <div className=''>
+                      <div className='flex-shrink-0 aspect-h-1 aspect-w-2'>
+                        <Image
+                          src={`${urlFor(post.mainImage)
+                            .width(700)
+                            .height(500)
+                            .url()}`}
+                          layout='fill'
+                          // quality={10}
+                          objectFit='cover'
+                          alt={post.title}
+                        />
+                      </div>
                     </div>
                     <div className='flex flex-col justify-between flex-1 p-6 bg-white'>
                       <div className='flex-1'>
