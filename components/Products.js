@@ -19,7 +19,7 @@ const Products = ({ products }) => {
               <div key={product.id} className='relative group'>
                 <div className='overflow-hidden bg-gray-200 rounded-md aspect-w-1 aspect-h-1 group-hover:opacity-75'>
                   <Image
-                    src={`${urlFor(product.image).url()}`}
+                    src={`${urlFor(product.image).width(600).height(800)}`}
                     layout='fill'
                     quality={20}
                     objectFit='cover'

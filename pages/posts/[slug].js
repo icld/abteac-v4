@@ -7,15 +7,17 @@ import Image from 'next/image';
 
 export default function Post({ post }) {
   return (
-    <div className='relative h-full px-4 pt-6 pb-2 mx-auto md:pt-8 lg:pt-16 max-w-7xl sm:px-6 lg:px-8'>
+    <div className='relative h-full px-4 pt-6 pb-16 mx-auto md:pt-8 lg:pt-16 max-w-7xl sm:px-6 lg:px-8'>
       <div className='relative bg-white '>
         <div className=' lg:absolute lg:inset-0'>
           <div className='aspect-w-6 aspect-h-2 md:aspect-h-2 lg:aspect-w-2 lg:aspect-h-1 lg:absolute lg:inset-y-0 lg:left-0 lg:w-1/2 '>
             <Image
-              className='object-cover lg:absolute lg:h-full'
-              src={`${urlFor(post?.mainImage).url()}`}
+              className='lg:absolute lg:h-full'
+              src={`${urlFor(post?.mainImage).width(700).height(900)}`}
               layout='fill'
-              alt=''
+              quality={50}
+              objectFit='cover'
+              alt='A photo that emphasizes the message for the post'
             />
           </div>
         </div>

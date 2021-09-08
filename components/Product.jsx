@@ -42,7 +42,7 @@ export default function Example(post) {
               <div className='grid grid-cols-1 lg:grid-cols-2 lg:gap-8'>
                 <div className='aspect-h-2 aspect-w-2 lg:col-span-2 lg:row-span-2 '>
                   <Image
-                    src={`${urlFor(product.image).url()}`}
+                    src={`${urlFor(product.image).width(700).height(900)}`}
                     key={product.id}
                     alt={product.id}
                     layout='fill'

@@ -49,9 +49,9 @@ const Home = ({ posts }) => {
                         <Image
                           src={`${urlFor(post.mainImage)
                             .width(700)
-                            .height(600)
-                            .url()}`}
+                            .height(600)}`}
                           layout='fill'
+                          quality={40}
                           priority='true'
                           objectFit='cover'
                           alt={post.title}
