@@ -5,11 +5,7 @@ import Image from 'next/image';
 
 const Products = ({ products }) => {
   const { addItem, removeItem } = useShoppingCart();
-  // console.log(
-  //   products.map((prod) => {
-  //     console.log(prod);
-  //   })
-  // );
+
   return (
     <section>
       <div className='bg-white'>

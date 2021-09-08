@@ -22,7 +22,7 @@ const ResultPage = () => {
 
   useEffect(() => {
     clearCart;
-  }, []);
+  }, [clearCart]);
 
   if (error) {
     return <div>failed to load</div>;
