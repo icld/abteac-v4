@@ -42,16 +42,16 @@ const Home = ({ posts }) => {
                 return (
                   <div
                     key={i}
-                    className='flex flex-col overflow-hidden rounded-lg shadow-lg'
+                    className='flex flex-col overflow-hidden rounded-lg shadow-lg '
                   >
                     <div className=''>
                       <div className='flex-shrink-0 aspect-h-2 aspect-w-3'>
                         <Image
                           src={`${urlFor(post.mainImage)
-                            .width(700)
-                            .height(600)}`}
+                            .width(500)
+                            .height(650)}`}
                           layout='fill'
-                          quality={40}
+                          quality={100}
                           priority='true'
                           objectFit='cover'
                           alt={post.title}
@@ -60,8 +60,8 @@ const Home = ({ posts }) => {
                     </div>
 
                     <Link href={`/posts/${post.slug}`} className='group'>
-                      <a className='block group '>
-                        <div className='flex flex-col justify-between flex-1 px-5 py-4 transition-colors duration-500 bg-white group-hover:bg-gray-300 '>
+                      <a className='flex items-center justify-center h-full group'>
+                        <div className='flex flex-col justify-between flex-1 min-h-full px-5 py-4 m-auto transition-colors duration-500 bg-white group-hover:bg-gray-300'>
                           <div className='flex-1'>
                             {/* title and description */}
 
@@ -76,30 +76,28 @@ const Home = ({ posts }) => {
                           {/* author */}
                           <div className='flex items-center mt-6'>
                             <div className='flex-shrink-0'>
-                              <a href=''>
-                                <span className='sr-only'>{post.author}</span>
-                                <div className='w-10'>
-                                  <Image
-                                    className='rounded-full'
-                                    src={`${urlFor(post.authImg)
-                                      .width(40)
-                                      .height(40)
-                                      .url()}`}
-                                    layout='responsive'
-                                    width={40}
-                                    height={40}
-                                    objectFit='cover'
-                                    alt='Author headshots'
-                                  />
-                                </div>
-                              </a>
+                              <span className='sr-only'>{post.author}</span>
+                              <div className='w-10'>
+                                <Image
+                                  className='rounded-full'
+                                  src={`${urlFor(post.authImg)
+                                    .width(40)
+                                    .height(40)
+                                    .url()}`}
+                                  layout='responsive'
+                                  width={40}
+                                  height={40}
+                                  objectFit='cover'
+                                  alt='Author headshots'
+                                />
+                              </div>
                             </div>
                             <div className='ml-3'>
-                              <p className='text-sm font-medium text-gray-900'>
-                                <a href='' className='hover:underline'>
+                              <div className='text-sm font-medium text-gray-900'>
+                                <div className='hover:underline'>
                                   {post.authName}
-                                </a>
-                              </p>
+                                </div>
+                              </div>
                               <div className='flex space-x-1 text-sm text-gray-500'>
                                 <time dateTime={post.datetime}>
                                   {post.date}

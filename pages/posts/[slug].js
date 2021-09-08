@@ -15,7 +15,7 @@ export default function Post({ post }) {
               className='lg:absolute lg:h-full'
               src={`${urlFor(post?.mainImage).width(700).height(900)}`}
               layout='fill'
-              quality={50}
+              quality={100}
               objectFit='cover'
               alt='A photo that emphasizes the message for the post'
             />
