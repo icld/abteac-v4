@@ -1,10 +1,8 @@
-import Link from 'next/link';
 import groq from 'groq';
 import BlockContent from '@sanity/block-content-to-react';
 import { client } from '../../lib/sanity/client';
 import urlFor from '../../lib/sanity/urlFor';
 import { postQuery } from '../../lib/sanity/postQuery';
-import SimpleNav from '../../components/SimpleNav';
 import Image from 'next/image';
 
 export default function Post({ post }) {

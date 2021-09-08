@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import { client } from '../lib/sanity/client';
 import { homeQuery } from '../lib/sanity/homeQuery';
-import groq from 'groq';
 import Image from 'next/image';
-import { useNextSanityImage } from 'next-sanity-image';
 
 import urlFor from '../lib/sanity/urlFor';
 
@@ -65,12 +63,6 @@ const Home = ({ posts }) => {
                       <a className='block group '>
                         <div className='flex flex-col justify-between flex-1 px-5 py-4 transition-colors duration-500 bg-white group-hover:bg-gray-300 '>
                           <div className='flex-1'>
-                            {/* <p className='text-sm font-medium text-indigo-600'>
-                          <a href='' className='hover:underline'>
-                            {post.categories}
-                          </a>
-                        </p> */}
-
                             {/* title and description */}
 
                             <p className='text-lg font-semibold text-gray-900 transition-colors duration-500 group-hover:text-white'>
@@ -138,6 +130,17 @@ export async function getStaticProps({ params }) {
     props: {
       posts,
     },
+  };
+}
+
+export async function getStaticPaths() {
+  const paths = await client.fetch(
+    groq`*[_type == "post" && defined(slug.current)][].slug.current`
+  );
+
+  return {
+    paths: paths.map((slug) => ({ params: { slug } })),
+    fallback: true,
   };
 }
 
