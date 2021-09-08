@@ -36,76 +36,90 @@ const Home = ({ posts }) => {
                 Gibberish for your achey bones
               </p>
             </div>
-            <div className='grid max-w-lg gap-5 mx-auto mt-12 lg:grid-cols-3 lg:max-w-none'>
-              {posts.map((post) => {
+
+            {/* posts */}
+
+            <div className='grid max-w-lg gap-6 mx-auto mt-12 lg:grid-cols-3 lg:max-w-none'>
+              {posts.map((post, i) => {
                 return (
                   <div
-                    key={post.title}
+                    key={i}
                     className='flex flex-col overflow-hidden rounded-lg shadow-lg'
                   >
                     <div className=''>
-                      <div className='flex-shrink-0 aspect-h-1 aspect-w-2'>
+                      <div className='flex-shrink-0 aspect-h-2 aspect-w-3'>
                         <Image
                           src={`${urlFor(post.mainImage)
                             .width(700)
-                            .height(500)
+                            .height(600)
                             .url()}`}
                           layout='fill'
-                          // quality={10}
+                          priority='true'
                           objectFit='cover'
                           alt={post.title}
                         />
                       </div>
                     </div>
-                    <div className='flex flex-col justify-between flex-1 p-6 bg-white'>
-                      <div className='flex-1'>
-                        <p className='text-sm font-medium text-indigo-600'>
+
+                    <Link href={`/posts/${post.slug}`} className='group'>
+                      <a className='block group '>
+                        <div className='flex flex-col justify-between flex-1 px-5 py-4 transition-colors duration-500 bg-white group-hover:bg-gray-300 '>
+                          <div className='flex-1'>
+                            {/* <p className='text-sm font-medium text-indigo-600'>
                           <a href='' className='hover:underline'>
                             {post.categories}
                           </a>
-                        </p>
-                        <Link href={`/posts/${post.slug}`}>
-                          <a className='block mt-2'>
-                            <p className='text-xl font-semibold text-gray-900'>
+                        </p> */}
+
+                            {/* title and description */}
+
+                            <p className='text-lg font-semibold text-gray-900 transition-colors duration-500 group-hover:text-white'>
                               {post.title}
                             </p>
-                            <p className='mt-3 text-base text-gray-500'>
+                            <p className='mt-1 text-base text-gray-500'>
                               {post.description}
                             </p>
-                          </a>
-                        </Link>
-                      </div>
-                      <div className='flex items-center mt-6'>
-                        <div className='flex-shrink-0'>
-                          <a href=''>
-                            <span className='sr-only'>{post.author}</span>
-                            <Image
-                              className='rounded-full'
-                              src={`${urlFor(post.authImg)
-                                .width(40)
-                                .height(40)
-                                .url()}`}
-                              width={40}
-                              height={40}
-                              layout='responsive'
-                              alt='Author headshots'
-                            />
-                          </a>
-                        </div>
-                        <div className='ml-3'>
-                          <p className='text-sm font-medium text-gray-900'>
-                            <a href='' className='hover:underline'>
-                              {post.authName}
-                            </a>
-                          </p>
-                          <div className='flex space-x-1 text-sm text-gray-500'>
-                            <time dateTime={post.datetime}>{post.date}</time>
-                            <span aria-hidden='true'>&middot;</span>
-                            <span>{post.readingTime} read</span>
+                          </div>
+
+                          {/* author */}
+                          <div className='flex items-center mt-6'>
+                            <div className='flex-shrink-0'>
+                              <a href=''>
+                                <span className='sr-only'>{post.author}</span>
+                                <div className='w-10'>
+                                  <Image
+                                    className='rounded-full'
+                                    src={`${urlFor(post.authImg)
+                                      .width(40)
+                                      .height(40)
+                                      .url()}`}
+                                    layout='responsive'
+                                    width={40}
+                                    height={40}
+                                    objectFit='cover'
+                                    alt='Author headshots'
+                                  />
+                                </div>
+                              </a>
+                            </div>
+                            <div className='ml-3'>
+                              <p className='text-sm font-medium text-gray-900'>
+                                <a href='' className='hover:underline'>
+                                  {post.authName}
+                                </a>
+                              </p>
+                              <div className='flex space-x-1 text-sm text-gray-500'>
+                                <time dateTime={post.datetime}>
+                                  {post.date}
+                                </time>
+                                <span aria-hidden='true'>&middot;</span>
+                                <span>{post.readingTime} read</span>
+                              </div>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </div>
+                      </a>
+                    </Link>
                   </div>
                 );
               })}
